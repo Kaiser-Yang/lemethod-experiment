@@ -1,6 +1,6 @@
 # lemethod-experiment
 
-## Record Introduction
+## Records Introduction
 
 Every directory in `record` is a record for a single experiment.
 Its name looks like this below:
@@ -71,3 +71,50 @@ to get `1.015191`, which is the calculation time of the first turn.
 This number is very small, because this experiment is a static experiment,
 which means that the workers will not wait a random time after pulling
 to simulate the computation time.
+
+## Scripts Introduction
+
+* `experiment.py`: This is the main experiment process, which will run the experiment. Usage:
+
+```bash
+python3 experiment.py WORKER_NUM MODULE_SIZE ITERATION SLEEP_AFTER_PULL
+```
+
+* `start_server.sh`: This script is used to start the server for the experiment.
+It will set up some environment variables and then run `experiment.py` as a server. Usage:
+
+```bash
+bash start_server.sh NUM_WORKER \
+    ENABLE_LEMETHOD ENABLE_TSENGINE \
+    LEMETHOD_CONNECTION_TYPE \
+    GREED_RATE \
+    PS_VERBOSE
+```
+
+* `start_worker.sh`: This script is used to start a worker for the experiment.
+It will set up some environment variables and then run `experiment.py` as a worker. Usage:
+
+```bash
+bash start_worker.sh NUM_WORKER \
+    ENABLE_LEMETHOD ENABLE_TSENGINE \
+    LEMETHOD_CONNECTION_TYPE \
+    GREED_RATE \
+    PS_VERBOSE \
+    DMLC_RNAK \
+    MODULE_SIZE \
+    ITERATION \
+    DMLC_NODE_HOST \
+    SLEEP_AFTER_PULL
+```
+
+* `start_scheduler.sh`: This script is used to start a scheduler for the experiment.
+It will set up some environment variables and then run `experiment.py` as a scheduler. Usage:
+
+```bash
+bash start_scheduler.sh NUM_WORKER \
+    ENABLE_LEMETHOD ENABLE_TSENGINE
+    LEMETHOD_CONNECTION_TYPE \
+    GREED_RATE \
+    PS_VERBOSE
+```
+
