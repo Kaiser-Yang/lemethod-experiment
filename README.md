@@ -1,5 +1,34 @@
 # lemethod-experiment
 
+## Experiments Design
+
+Before experiment, we will run `LeMethod` and `TSEngine` for
+`1000` iterations with `32` workers, `240MB` model size
+and fixed `SCHEDULE_NUM=1` but with different `GREED_RATE`
+but with different `GREED_RATE` for both dynamic and static experiments
+to get the best `GREED_RATE` for each method.
+
+And we will run `LeMethod` for `1000` iterations with `32` workers, `240MB` model size
+and fixed `GREED_RATE=1` but with different `SCHEDULE_NUM` for both dynamic and static experiments
+to get the best `SCHEDULE_NUM` for `LeMethod`.
+
+After this, we will run `LeMethod` and `TSEngine` with the best `GREED_RATE` and `SCHEDULE_NUM`
+in the following experiments.
+
+1. For the star topology, the traditional parameter server architecture, `TSEngine`, and `LeMethod`
+will be compared.
+2. For the complete connection topology, `LeMethod` and `TSEngine` will be compared.
+3. For the expanded star topology, only `LeMethod` will be tested.
+
+For `1` and `2`, we run the experiments with different numbers of workers
+, different model sizes, dynamic and static experiments,
+for `1000` iterations.
+
+For `3`, we run the experiments with different numbers of workers,
+different model sizes, dynamic and static experiments,
+and different expansion factors,
+for `1000` iterations.
+
 ## Records Introduction
 
 Every directory in `record` is a record for a single experiment.
