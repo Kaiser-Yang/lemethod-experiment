@@ -11,12 +11,12 @@ type_worker_[type]_[schedule]_module_[greed]_dynamic_signature
 
 This below is for the meaning of this parameters:
 
-* `type`: 
+* `type`:
     * `default`
     * `lemethod`
     * `tsengine`
 * `worker`: How many workers for this experiment.
-* `type`: Only when the type is `lemethod`, there will be this parameter. 
+* `type`: Only when the type is `lemethod`, there will be this parameter.
     * `0`: star
     * `1`: complete connection
     * `2`: expanded star.
