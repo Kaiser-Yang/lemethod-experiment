@@ -33,7 +33,7 @@ def stopExperiment() -> None:
         output = output[1:-1]
         pid = []
         for i in range(len(output)):
-            if "/root/miniconda3/envs/lemethod/bin/python" in output[i]:
+            if "python3" in output[i]:
                 pid.append(output[i].split()[1])
         if len(pid) == 0:
             continue
