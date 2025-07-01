@@ -58,7 +58,7 @@ def createServerAndWorker(topo: Topo, nodeType: Image, workerNum: int) -> dict:
     for i in range(workerNum):
         workerName = getWorkerName(i)
         nodeMap[workerName] = topo.add_node(nodeType, node_name=workerName,
-                                            resource_limit={"cpu": "50", "mem": "1500"},
+                                            resource_limit={"cpu": "50", "mem": "2000"},
                                             location={"x": 220 * i, "y": 100})
     return nodeMap
 
