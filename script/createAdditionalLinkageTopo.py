@@ -112,7 +112,7 @@ def createAdditionalLinkageTopo() -> None:
     print(f"add linkage between server({serverIP}) and router")
     switchID = 0
     for i in range(workerNum):
-        if ufs.isFather(i) and ufs.count(i) < 2:
+        if not ufs.isFather(i) or ufs.count(i) < 2:
             continue
         for workerID in ufs.member[i]:
             workerName = commonConfig.getWorkerName(workerID)
