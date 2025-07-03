@@ -97,7 +97,7 @@ def createAdditionalLinkageTopo() -> None:
     add_node = additionalLinkageTopo.add_node
     switchAndRouterMap["router"] = add_node(commonConfig.imageMap['ovs'],
                                             node_name="router",
-                                            resource_limit={"cpu": "50", "mem": "1000"},
+                                            resource_limit={"cpu": "50", "mem": "2000"},
                                             location={"x": 110 * workerNum, "y": 300})
 
     linkageNum = 0
