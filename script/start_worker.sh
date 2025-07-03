@@ -37,4 +37,4 @@ PS_VERBOSE=$PS_VERBOSE \
 DMLC_NODE_HOST=$DMLC_NODE_HOST \
 $START_WORKER "$NUM_WORKER" "$MODULE_SIZE" "$ITERATION" "$SLEEP_AFTER_PULL" \
 >> worker_"$DMLC_RNAK".log 2>&1 &
-prlimit --pid "$!" --rss=2000000000:2000000000
+bash memory_checker.sh "$!" 2000

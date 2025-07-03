@@ -11,10 +11,12 @@ import sys
 def uploadExperimentFileToAllNode(workerNum: int) -> None:
     uploadFileToNode("./experiment.py", "server", "/root/experiment.py")
     uploadFileToNode("./start_server.sh", "server", "/root/start_server.sh")
+    uploadFileToNode("./memory_checker.sh", "server", "/root/memory_checker.sh")
     uploadFileToNode("./start_scheduler.sh", "server", "/root/start_scheduler.sh")
     for i in range(workerNum):
         uploadFileToNode("./experiment.py", getWorkerName(i), "/root/experiment.py")
         uploadFileToNode("./start_worker.sh", getWorkerName(i), "/root/start_worker.sh")
+        uploadFileToNode("./memory_checker.sh", getWorkerName(i), "/root/memory_checker.sh")
 
 
 def prepareExperiment(projectName: str) -> int:
