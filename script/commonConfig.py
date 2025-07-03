@@ -53,7 +53,7 @@ def getIP(networkIP: str, index: int) -> str:
 def createServerAndWorker(topo: Topo, nodeType: Image, workerNum: int) -> dict:
     nodeMap = {}
     nodeMap["server"] = topo.add_node(nodeType, node_name="server",
-                                      resource_limit={"cpu": "200", "mem": "1000"},
+                                      resource_limit={"cpu": "200", "mem": "2000"},
                                       location={"x": 110 * workerNum, "y": 400})
     for i in range(workerNum):
         workerName = getWorkerName(i)
@@ -68,7 +68,7 @@ def createSwitchNode(topo: Topo, nodeType: Image, switchNum: int) -> dict:
     for i in range(switchNum):
         switchName = getSwitchName(i)
         nodeMap[switchName] = topo.add_node(nodeType, node_name=switchName,
-                                            resource_limit={"cpu": "50", "mem": "1000"},
+                                            resource_limit={"cpu": "50", "mem": "2000"},
                                             location={"x": 220 * i, "y": 200})
     return nodeMap
 
