@@ -29,4 +29,4 @@ LEMETHOD_CONF_PATH=/root/lemethod.conf \
 LEMETHOD_CONNECTION_TYPE=$LEMETHOD_CONNECTION_TYPE \
 PS_VERBOSE=$PS_VERBOSE \
 $START_SERVER >> server.log 2>&1 &
-bash memory_checker.sh "$!" 2000 &
+bash memory_checker.sh "$!" "$(awk 'BEGIN {print 2.5*1024}')" &
