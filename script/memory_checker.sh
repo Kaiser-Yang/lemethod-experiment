@@ -11,7 +11,7 @@ MAX_MEM_KB=$((MAX_MEM_MB * 1024))  # 转换为KB
 
 while true; do
     MEM_USAGE=$(ps -p "$PROCESS_ID" -o rss=)
-    if [[ "$MEM_USAGE" > "$MAX_MEM_KB" ]]; then
+    if [[ "$MEM_USAGE" -gt "$MAX_MEM_KB" ]]; then
         kill -9 "$PROCESS_ID"
     fi
     if [[ "$MEM_USAGE" = "" ]]; then
