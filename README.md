@@ -50,7 +50,7 @@ This below is for the meaning of this parameters:
     * `2`: expanded star.
 * `schedule`: Only when the type is `lemethod`, there will be this parameter.
 How many worker nodes will participate in one local aggregation scheduling.
-* `module`: The size of the machine learning model.
+* `model`: The size of the machine learning model.
 * `greed`: Only when the type is `lemethod` or `tsengine`, there will be this parameter.
 Represents the probability sending to best match and
 `1 - greed` represents the probability sending randomly.
