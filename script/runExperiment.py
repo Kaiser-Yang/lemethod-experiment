@@ -15,11 +15,14 @@ def updateConfigFile() -> None:
     expiration = 5 if SLEEP_AFTER_PULL else 999999
     execCmd("server", f'bash -c "echo \'SET_SCHEDULE_NUM {scheduleNum}\' >> /root/lemethod.conf"')
     execCmd("server", f'bash -c "echo \'SET_BANDWIDTH_EXPIRATION {expiration}\' >> /root/lemethod.conf"')
+    execCmd("server", f'bash -c "echo \'SET_MAX_RECEIVING_LIMIT 5\' >> /root/lemethod.conf"')
     for i in range(workerNum):
         execCmd(getWorkerName(i),
                 f'bash -c "echo \'SET_SCHEDULE_NUM {scheduleNum}\' >> /root/lemethod.conf"')
         execCmd(getWorkerName(i),
                 f'bash -c "echo \'SET_BANDWIDTH_EXPIRATION {expiration}\' >> /root/lemethod.conf"')
+        execCmd(getWorkerName(i),
+                f'bash -c "echo \'SET_MAX_RECEIVING_LIMIT 5\' >> /root/lemethod.conf"')
 
 
 def startExperiment(projectName) -> None:
