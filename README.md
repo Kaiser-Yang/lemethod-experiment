@@ -3,11 +3,11 @@
 ## Experiments Design
 
 Before experiment, we will run `LeMethod` and `TSEngine` for
-`1000` iterations with `32` workers, `240MB` model size
+`100` iterations with `32` workers, `240MB` model size
 and fixed `SCHEDULE_NUM=1` but with different `GREED_RATE`
 for both dynamic and static experiments to get the best `GREED_RATE` for each method.
 
-And we will run `LeMethod` for `1000` iterations with `32` workers, `240MB` model size
+And we will run `LeMethod` for `100` iterations with `32` workers, `240MB` model size
 and fixed `GREED_RATE=1` but with different `SCHEDULE_NUM`
 for both dynamic and static experiments to get the best `SCHEDULE_NUM` for `LeMethod`.
 
@@ -21,12 +21,12 @@ will be compared.
 
 For `1` and `2`, we run the experiments with different numbers of workers
 , different model sizes, dynamic and static experiments,
-for `1000` iterations.
+for `100` iterations.
 
 For `3`, we run the experiments with different numbers of workers,
 different model sizes, dynamic and static experiments,
 and different expansion factors,
-for `1000` iterations.
+for `100` iterations.
 
 ## Records Introduction
 
