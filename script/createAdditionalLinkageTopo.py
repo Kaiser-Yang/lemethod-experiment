@@ -82,10 +82,15 @@ def createAdditionalLinkageTopo() -> None:
 
     configList = getAdditionalLinkageRandomly()
     ufs = UFS(workerNum)
-    for connection in configList:
-        nodeID = connection.split(' ')[1:]
-        ufs.join(int(nodeID[0]), int(nodeID[1]))
-
+    # for connection in configList:
+    #     nodeID = connection.split(' ')[1:]
+    #     ufs.join(int(nodeID[0]), int(nodeID[1]))
+    # NOTE:
+    # We connect all workers together but use config files to control
+    # the actual additional linkages.
+    for i in range(workerNum):
+        for j in range(i + 1, workerNum):
+            ufs.join(i, j)
     switchNum = 0
     for i in range(workerNum):
         if ufs.isFather(i) and ufs.count(i) >= 2:
