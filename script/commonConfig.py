@@ -6,7 +6,7 @@ from vemu_api import Topo, Image
 
 userName = 'kaiser'
 backendURL = 'kb310server.x3322.net'
-backendPort = 10545
+backendPort = 10435
 
 imageManager = None
 projectManager = None
@@ -53,12 +53,12 @@ def getIP(networkIP: str, index: int) -> str:
 def createServerAndWorker(topo: Topo, nodeType: Image, workerNum: int) -> dict:
     nodeMap = {}
     nodeMap["server"] = topo.add_node(nodeType, node_name="server",
-                                      resource_limit={"cpu": "200", "mem": "2000"},
+                                      resource_limit={"cpu": "0", "mem": "0"},
                                       location={"x": 110 * workerNum, "y": 400})
     for i in range(workerNum):
         workerName = getWorkerName(i)
         nodeMap[workerName] = topo.add_node(nodeType, node_name=workerName,
-                                            resource_limit={"cpu": "50", "mem": "2000"},
+                                            resource_limit={"cpu": "0", "mem": "0"},
                                             location={"x": 220 * i, "y": 100})
     return nodeMap
 
@@ -68,7 +68,7 @@ def createSwitchNode(topo: Topo, nodeType: Image, switchNum: int) -> dict:
     for i in range(switchNum):
         switchName = getSwitchName(i)
         nodeMap[switchName] = topo.add_node(nodeType, node_name=switchName,
-                                            resource_limit={"cpu": "50", "mem": "2000"},
+                                            resource_limit={"cpu": "0", "mem": "0"},
                                             location={"x": 220 * i, "y": 200})
     return nodeMap
 

@@ -14,9 +14,9 @@ def extractResult():
     for nodeName in nodeMap:
         if "worker" in nodeName:
             res = execCmd(nodeName, "cat /root/experimentResult.out")
-            print(res[nodeName]["cat /root/experimentResult.out"]["output"])
+            print(res[nodeName][f"0_cat /root/experimentResult.out"]["output"])
             with open(savePath + "/" + nodeName, "w") as resFile:
-                resFile.write(res[nodeName]["cat /root/experimentResult.out"]["output"])
+                resFile.write(res[nodeName][f"0_cat /root/experimentResult.out"]["output"])
 
 if __name__ == "__main__":
     argc = len(sys.argv)
