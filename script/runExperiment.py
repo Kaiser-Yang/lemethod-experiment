@@ -12,7 +12,7 @@ import os
 
 
 def updateConfigFile() -> None:
-    expiration = 5 if SLEEP_AFTER_PULL else 999999
+    expiration = 5
     execCmd("server", f'bash -c "echo \'SET_SCHEDULE_NUM {scheduleNum}\' >> /root/lemethod.conf"')
     execCmd("server", f'bash -c "echo \'SET_BANDWIDTH_EXPIRATION {expiration}\' >> /root/lemethod.conf"')
     execCmd("server", f'bash -c "echo \'SET_MAX_RECEIVING_LIMIT 5\' >> /root/lemethod.conf"')
@@ -28,14 +28,14 @@ def updateConfigFile() -> None:
 def startExperiment(projectName) -> None:
     os.system(f"bash -c 'nohup ./updateBandwidth.py {projectName} 1 &'")
     args = f'{workerNum} {enableLeMethod} {enableTSEngine} {connectionType} {greedRate} {VERBOSE}'
-    execCmd("server", f'bash -c "cd /root && nohup bash /root/start_scheduler.sh {args}"')
-    execCmd("server", f'bash -c "cd /root && nohup bash /root/start_server.sh {args}"')
+    execCmd("server", f'bash -c "cd /root && nohup bash /root/start_scheduler.sh {args} {ENABLE_MEMORY_CHECKER}"')
+    execCmd("server", f'bash -c "cd /root && nohup bash /root/start_server.sh {args} {ENABLE_MEMORY_CHECKER}"')
     for i in range(workerNum):
         # this workerIP is important,
         # mxnet may get the wrong ip on this platform
         # so you need specify the ip manually
         workerIP = commonConfig.getIP("192.168.0.0", i + 1).split('/')[0]
-        workerArgs = args + f" {i} {modeuleSize} {iteration} {workerIP} {SLEEP_AFTER_PULL}"
+        workerArgs = args + f" {i} {modeuleSize} {iteration} {workerIP} {SLEEP_AFTER_PULL} {ENABLE_MEMORY_CHECKER}"
         execCmd(getWorkerName(i),
                 f'bash -c "cd /root && nohup bash /root/start_worker.sh {workerArgs}"')
 
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     if argc < 8:
         print("Usage: python runExperiment.py PROJECT_NAME LEMETHOD|TSENGINE|DEFAULT "
               "CONNECTION_TYPE SCHEDULE_NUM MODULE_SIZE ITERATION GREED_RATE [VERBOSE] "
-              "[SLEEP_AFTER_PULL]")
+              "[SLEEP_AFTER_PULL] [ENABLE_MEMORY_CHECKER]")
         exit(1)
     else:
         projectName = sys.argv[1]
@@ -71,6 +71,10 @@ if __name__ == "__main__":
             SLEEP_AFTER_PULL = int(sys.argv[9])
         else:
             SLEEP_AFTER_PULL = 0
+        if argc > 10:
+            ENABLE_MEMORY_CHECKER = int(sys.argv[10])
+        else:
+            ENABLE_MEMORY_CHECKER = 0
     commonConfig.init(projectName)
     workerNum = 0
     for nodeName in commonConfig.nodeManager.get_nodes():

@@ -15,6 +15,7 @@ MODULE_SIZE=$8
 ITERATION=$9
 DMLC_NODE_HOST=${10}
 SLEEP_AFTER_PULL=${11}
+ENABLE_MEMORY_CHECKER=${12}
 
 SCHEDULER_PORT=9092
 WORKER_PATH='./experiment.py'
@@ -37,6 +38,6 @@ PS_VERBOSE=$PS_VERBOSE \
 DMLC_NODE_HOST=$DMLC_NODE_HOST \
 $START_WORKER "$NUM_WORKER" "$MODULE_SIZE" "$ITERATION" "$SLEEP_AFTER_PULL" \
 >> worker_"$DMLC_RNAK".log 2>&1 &
-if [ "$ENABLE_LEMETHOD" == "1" ]; then
+if [ "$ENABLE_MEMORY_CHECKER" == "1" ]; then
     bash memory_checker.sh "$!" "$(awk 'BEGIN {print 2.5*1024}')" &
 fi

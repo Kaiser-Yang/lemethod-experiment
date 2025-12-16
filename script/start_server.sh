@@ -10,6 +10,7 @@ LEMETHOD_CONNECTION_TYPE=$4
 # TSENGINE must with the GREED_RATE, because its codes do not check the environment variable.
 GREED_RATE=$5
 PS_VERBOSE=$6
+ENABLE_MEMORY_CHECKER=$7
 
 SCHEDULER_PORT=9092
 PARAMETER_SERVER_PATH='./experiment.py'
@@ -29,6 +30,6 @@ LEMETHOD_CONF_PATH=/root/lemethod.conf \
 LEMETHOD_CONNECTION_TYPE=$LEMETHOD_CONNECTION_TYPE \
 PS_VERBOSE=$PS_VERBOSE \
 $START_SERVER >> server.log 2>&1 &
-if [ "$ENABLE_LEMETHOD" == "1" ]; then
+if [ "$ENABLE_MEMORY_CHECKER" == "1" ]; then
     bash memory_checker.sh "$!" "$(awk 'BEGIN {print 2.5*1024}')" &
 fi
