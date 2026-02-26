@@ -185,8 +185,8 @@ The result of 32 workers of lemethod with different greed rates in dynamic exper
 The result of 32 workers of lemethod with different schedule numbers in static experiments:
 
 ```text
-('lemethod_35_1_5_240M_1_0_d', 2579.7233152389526)
-('lemethod_34_1_4_240M_1_0_d', 2621.7886576652527)
+('lemethod_32_1_5_240M_1_0_d', 2579.7233152389526)
+('lemethod_32_1_4_240M_1_0_d', 2621.7886576652527)
 ('lemethod_32_1_3_240M_1_0_d', 2622.1098268032074)
 ('lemethod_32_1_7_240M_1_0_d', 2683.771742582321)
 ('lemethod_32_1_6_240M_1_0_d', 2703.45508146286)
@@ -224,15 +224,14 @@ The result of 32 workers of lemethod with different schedule numbers in static e
 The result of 32 workers of lemethod with different schedule numbers in dynamic experiments:
 
 ```text
-('lemethod_33_1_3_240M_1_1_d', 2873.249228954315)
-('lemethod_33_1_2_240M_1_1_d', 2944.5967903137207)
+('lemethod_32_1_3_240M_1_1_d', 2873.249228954315)
+('lemethod_32_1_2_240M_1_1_d', 2944.5967903137207)
 ('lemethod_32_1_5_240M_1_1_d', 2960.741891860962)
 ('lemethod_32_1_4_240M_1_1_d', 2962.4370877742767)
 ('lemethod_32_1_6_240M_1_1_d', 2979.526656150818)
 ('lemethod_32_1_1_240M_1_1_d', 2995.769952058792)
 ('lemethod_32_1_7_240M_1_1_d', 3198.519252061844)
 ('lemethod_32_1_8_240M_1_1_d', 3344.986218690872)
-('lemethod_32_1_0_240M_1_1_d', 3386.491563796997)
 ('lemethod_32_1_9_240M_1_1_d', 3389.875543117523)
 ('lemethod_32_1_10_240M_1_1_d', 3524.904333591461)
 ('lemethod_32_1_11_240M_1_1_d', 3691.7322657108307)
