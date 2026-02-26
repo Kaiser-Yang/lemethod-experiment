@@ -37,6 +37,8 @@ if __name__ == '__main__':
                 resultList[j][0] = max(resultList[j][0], float(line[0]))
                 resultList[j][1] = max(resultList[j][1], float(line[1]))
             data.close()
+        if resultList == None:
+            continue
         resultFile = open('./' + fileOrDir + '/iteration', 'w')
         assert(resultList != None)
         for item in resultList:
