@@ -126,3 +126,4 @@ ax.text(ps_x, ps_y-0.9, '全局模型', fontsize=9, color='gray', ha='center')
 # 调整图形并保存
 plt.tight_layout()
 plt.savefig('distributed_training.png', dpi=150, bbox_inches='tight')
+print('saved to distributed_training.png')

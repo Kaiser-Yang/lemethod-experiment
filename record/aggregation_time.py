@@ -40,9 +40,8 @@ def main():
     parser.add_argument('--labels', nargs='*', help='图例标签，数量需与文件数一致')
     parser.add_argument('--colors', nargs='*', help='线条颜色')
     parser.add_argument('--linestyles', nargs='*', help='线条样式')
-    parser.add_argument('--title', default='每轮聚合时间对比', help='图表标题')
     parser.add_argument('--xlabel', default='训练轮次', help='X轴标签')
-    parser.add_argument('--ylabel', default='聚合时间 (s)', help='Y轴标签')
+    parser.add_argument('--ylabel', default='聚合时间（秒）', help='Y轴标签')
     parser.add_argument('--figsize', nargs=2, type=float, default=[10, 6], help='图表尺寸 (宽 高)')
     parser.add_argument('--dpi', type=int, default=300, help='输出PNG的分辨率')
     args = parser.parse_args()
@@ -68,7 +67,6 @@ def main():
 
     plt.xlabel(args.xlabel, fontsize=12)
     plt.ylabel(args.ylabel, fontsize=12)
-    plt.title(args.title, fontsize=14)
     plt.legend(fontsize=10)
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()

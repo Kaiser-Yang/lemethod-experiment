@@ -98,8 +98,7 @@ plt.plot(x_ls, y_ls, marker='^', linestyle='-', color='tab:green', label='静态
 plt.plot(x_ld, y_ld, marker='D', linestyle='-', color='tab:red', label='动态LeMethod')
 
 plt.xlabel('模型大小（MB）', fontsize=12)
-plt.ylabel('总耗时（s）', fontsize=12)
-plt.title('总耗时随模型大小变化图（W=50）', fontsize=14)
+plt.ylabel('总耗时（秒）', fontsize=12)
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.legend(fontsize=10)
 plt.tight_layout()

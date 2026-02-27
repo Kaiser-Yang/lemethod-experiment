@@ -30,8 +30,7 @@ def main():
     parser.add_argument('--labels', nargs='*', help='图例标签')
     parser.add_argument('--colors', nargs='*', help='线条颜色')
     parser.add_argument('--linestyles', nargs='*', help='线条样式')
-    parser.add_argument('--title', default='聚合时间累积分布', help='图表标题')
-    parser.add_argument('--xlabel', default='聚合时间 (s)', help='X轴标签')
+    parser.add_argument('--xlabel', default='聚合时间（秒）', help='X轴标签')
     parser.add_argument('--ylabel', default='累积概率', help='Y轴标签')
     parser.add_argument('--figsize', nargs=2, type=float, default=[8, 6], help='图表尺寸')
     parser.add_argument('--dpi', type=int, default=300, help='PNG分辨率')
@@ -58,7 +57,6 @@ def main():
 
     plt.xlabel(args.xlabel, fontsize=12)
     plt.ylabel(args.ylabel, fontsize=12)
-    plt.title(args.title, fontsize=14)
     plt.legend(fontsize=10)
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.tight_layout()

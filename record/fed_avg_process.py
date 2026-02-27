@@ -116,4 +116,4 @@ ax.text(ps_x + 3.0, ps_y - 1.0, '停止条件：\n目标精度 / 最大轮数', 
 # 调整布局并保存
 plt.tight_layout()
 plt.savefig('fed_avg_training.png', dpi=150, bbox_inches='tight')
-plt.show()
+print('saved to fed_avg_training.png')
