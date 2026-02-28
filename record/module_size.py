@@ -92,10 +92,10 @@ y_dd = [p[1] for p in dd]
 
 # 绘制折线图
 plt.figure(figsize=(10, 6))
-plt.plot(x_ds, y_ds, marker='o', linestyle='-', color='tab:blue', label='静态默认')
-plt.plot(x_dd, y_dd, marker='s', linestyle='-', color='tab:orange', label='动态默认')
-plt.plot(x_ls, y_ls, marker='^', linestyle='-', color='tab:green', label='静态LeMethod')
-plt.plot(x_ld, y_ld, marker='D', linestyle='-', color='tab:red', label='动态LeMethod')
+plt.plot(x_ds, y_ds, marker='o', linestyle='-', color='tab:blue', label='原始静态')
+plt.plot(x_dd, y_dd, marker='s', linestyle='-', color='tab:orange', label='原始动态')
+plt.plot(x_ls, y_ls, marker='^', linestyle='-', color='tab:green', label='LeMethod静态')
+plt.plot(x_ld, y_ld, marker='D', linestyle='-', color='tab:red', label='LeMethod动态')
 
 plt.xlabel('模型大小（MB）', fontsize=12)
 plt.ylabel('总耗时（秒）', fontsize=12)
