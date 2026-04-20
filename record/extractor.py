@@ -41,11 +41,15 @@ if __name__ == '__main__':
             continue
         resultFile = open('./' + fileOrDir + '/iteration', 'w')
         assert(resultList != None)
+        totalTime = 0
         for item in resultList:
-            resultFile.write(f'{item[1] - item[0]}\n')
+            cur = item[1] - item[0]
+            totalTime += cur
+            resultFile.write(f'{cur}\n')
         resultFile.write(f'{endTime - startTime}\n')
+        resultFile.write(f'{totalTime}\n')
         resultFile.close()
-        totalTimeMap[fileOrDir] = endTime - startTime;
+        totalTimeMap[fileOrDir] = (endTime - startTime, totalTime);
     for item in totalTimeMap.items():
-        print(item)
+        print((item[0], item[1][0], item[1][1]))
 
