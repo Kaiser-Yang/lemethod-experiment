@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.rcParams['font.sans-serif'] = ['Noto Sans CJK SC', 'WenQuanYi Zen Hei', 'SimHei', 'Arial Unicode MS']
+matplotlib.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei']
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -30,7 +30,7 @@ def draw_cylinder(ax, center_x, center_y, width, height, color='lightgray', edge
     )
     ax.add_patch(bottom_ellipse)
     if label:
-        ax.text(center_x, center_y, label, ha='center', va='center', fontsize=9)
+        ax.text(center_x, center_y, label, ha='center', va='center', fontsize=14)
 
 # ========== 参数服务器 ==========
 ps_x, ps_y = 0, 4.5
@@ -40,11 +40,11 @@ ps_rect = patches.FancyBboxPatch(
     boxstyle="round,pad=0.2", linewidth=2, edgecolor='navy', facecolor='lightblue', alpha=0.9
 )
 ax.add_patch(ps_rect)
-ax.text(ps_x, ps_y + 0.2, '参数服务器', ha='center', va='center', fontsize=12, fontweight='bold')
+ax.text(ps_x, ps_y + 0.2, '参数服务器', ha='center', va='center', fontsize=14, fontweight='bold')
 ax.text(ps_x, ps_y - 0.2, '加权聚合: $g_t = \\sum_{k=1}^{N} \\frac{n_k}{n} g_t^{(k)}$', 
-        ha='center', va='center', fontsize=9)
+        ha='center', va='center', fontsize=14)
 ax.text(ps_x, ps_y - 0.5, '$W_{t+1} = W_t - \\eta g_t$', 
-        ha='center', va='center', fontsize=10, fontweight='bold')
+        ha='center', va='center', fontsize=14, fontweight='bold')
 
 # ========== 工作节点 ==========
 node_positions = [(-2.5, 2), (0, 2), (2.5, 2)]
@@ -55,12 +55,12 @@ nodes = []
 for i, (x, y) in enumerate(node_positions):
     # 节点矩形（圆角）
     rect = patches.FancyBboxPatch(
-        (x - 1.2, y - 0.7), 2.4, 1.4,
+        (x - 1.2, y - 0.7), 2.3, 1.4,
         boxstyle="round,pad=0.1", linewidth=2, edgecolor='darkred', facecolor=node_colors[i], alpha=0.8
     )
     ax.add_patch(rect)
-    ax.text(x, y + 0.2, node_labels[i], ha='center', va='center', fontsize=10, fontweight='bold')
-    ax.text(x, y - 0.3, grad_labels[i], ha='center', va='center', fontsize=9)
+    ax.text(x, y + 0.2, node_labels[i], ha='center', va='center', fontsize=14, fontweight='bold')
+    ax.text(x, y - 0.3, grad_labels[i], ha='center', va='center', fontsize=14)
     nodes.append((x, y))
 
 # ========== 本地数据集（每个节点下方） ==========
@@ -82,38 +82,38 @@ for i in range(len(node_positions)):
 # 从每个工作节点指向参数服务器的箭头（红色）
 offsets = [-0.2, 0.1, 0.2]  # 左右偏移以显示平行箭头
 for i, (nx, ny) in enumerate(nodes):
-    ax.annotate("", xy=(nx + offsets[i], ny + 0.8), xytext=(ps_x + offsets[i], ps_y - 0.8),
+    ax.annotate("", xy=(nx + offsets[i], ny + 0.8), xytext=(ps_x + offsets[i], ps_y - 0.92),
                 arrowprops=dict(arrowstyle='->', color='blue', lw=2, linestyle='-'))
-    ax.annotate("", xy=(ps_x - offsets[i], ps_y - 0.8), xytext=(nx - offsets[i], ny + 0.8),
+    ax.annotate("", xy=(ps_x - offsets[i], ps_y - 0.92), xytext=(nx - offsets[i], ny + 0.8),
                 arrowprops=dict(arrowstyle='->', color='red', lw=2, linestyle='-'))
 # 在第一个箭头上方添加标注
-ax.text(-1.5, 3.2, '① 广播 $W_t$, 学习率 $\\eta$', fontsize=10, color='blue', 
+ax.text(-2.9, 3.2, '① 广播 $W_t$, 学习率 $\\eta$', fontsize=14, color='blue', 
         bbox=dict(boxstyle="round,pad=0.3", facecolor='white', edgecolor='blue'))
 
 # 在右侧添加上传标注
-ax.text(2.0, 3.5, '③ 上传 $g_t^{(k)}$', fontsize=10, color='red', 
+ax.text(0.3, 3.2, '③ 上传 $g_t^{(k)}$', fontsize=14, color='red', 
         bbox=dict(boxstyle="round,pad=0.3", facecolor='white', edgecolor='red'))
 
 # ========== 步骤 2：本地计算梯度（已在节点内部标注） ==========
 # 添加步骤标签 (2) 靠近节点
-ax.text(-3.8, 2.2, '② 本地计算梯度', fontsize=10, color='darkred', fontweight='bold')
+ax.text(-3.8, 2.2, '② 本地计算梯度', fontsize=14, color='darkred', fontweight='bold',ha='center', va='center', bbox=dict(boxstyle="round,pad=0.3", facecolor='white', edgecolor='navy'))
 
 
 # ========== 步骤 4：聚合与更新（已在参数服务器内部显示） ==========
 # 添加步骤标签 (4) 在参数服务器旁边
-ax.text(ps_x + 2.0, ps_y, '④ 加权聚合\n全局更新', fontsize=10, color='navy', fontweight='bold',
+ax.text(ps_x + 1.7, ps_y+0.2, '④ 加权聚合全局更新', fontsize=14, color='navy', fontweight='bold',
         ha='center', va='center', bbox=dict(boxstyle="round,pad=0.3", facecolor='white', edgecolor='navy'))
 
 # ========== 步骤 5：循环迭代 ==========
 # 从参数服务器指向自身的弯曲箭头（表示下一轮）
-ax.annotate("", xy=(ps_x + 1.2, ps_y + 1.2), xytext=(ps_x + 2.5, ps_y + 0.5),
+ax.annotate("", xy=(ps_x, ps_y + 0.24), xytext=(ps_x + 1.7, ps_y + 0.5),
             arrowprops=dict(arrowstyle='->', color='purple', lw=2, linestyle='dashed',
                             connectionstyle="arc3,rad=0.4"))
-ax.text(ps_x + 1.8, ps_y + 1., '⑤ 下一轮迭代\n直至收敛', fontsize=10, color='purple',
+ax.text(ps_x + 1.4, ps_y + 0.8, '⑤ 下一轮迭代直至收敛', fontsize=14, color='purple',
         bbox=dict(boxstyle="round,pad=0.2", facecolor='white', edgecolor='purple'))
 
 # 添加停止条件标注
-ax.text(ps_x + 3.0, ps_y - 1.0, '停止条件：\n目标精度 / 最大轮数', fontsize=9, color='gray',
+ax.text(ps_x + 3.0, ps_y - 1.0, '停止条件：\n目标精度 / 最大轮数', fontsize=14, color='gray',
         bbox=dict(boxstyle="round,pad=0.2", facecolor='white', edgecolor='gray'))
 
 # 调整布局并保存
