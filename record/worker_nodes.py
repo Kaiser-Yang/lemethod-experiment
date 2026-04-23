@@ -166,8 +166,8 @@ print("Saved scale_nodes_dynamic.png")
 # ==================== 绘制 ====================
 plt.figure(figsize=(10, 6))
 
-plt.plot(x_ds, y_ds, marker='o', linestyle='-', color='tab:blue', label='原始静态')
-plt.plot(x_dd, y_dd, marker='s', linestyle='-', color='tab:orange', label='原始动态')
+plt.plot(x_ds, y_ds, marker='o', linestyle='-', color='tab:blue', label='FedAvg静态')
+plt.plot(x_dd, y_dd, marker='s', linestyle='-', color='tab:orange', label='FedAvg动态')
 plt.plot(x_ls, y_ls, marker='^', linestyle='-', color='tab:green', label='LeMethod静态')
 plt.plot(x_ld, y_ld, marker='D', linestyle='-', color='tab:red', label='LeMethod动态')
 

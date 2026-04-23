@@ -19,6 +19,8 @@ def read_times(file_path, skip_last=True):
         lines = [line.strip() for line in f if line.strip()]
     if skip_last:
         lines = lines[:-1]
+    if len(lines) == 101:
+        lines = lines[:100]
     return [float(line) for line in lines]
 
 def main():
